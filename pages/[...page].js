@@ -82,7 +82,17 @@ export default function Page({ page }) {
         Website header here!!
       </div>
       {/* Render the Builder page */}
-      <BuilderComponent model="page" content={page} />
+      <BuilderComponent 
+        model="page" 
+        content={page} 
+        context={{
+          fetchDataFromAPI: function() {
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(response => response.json())
+            .then(json => console.log(json))
+          }
+        }} 
+      />
 
       <div style={{ padding: 50, textAlign: 'center' }}>
         {/* Put your footer or main layout here */}
